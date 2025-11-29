@@ -11,6 +11,13 @@ body {
   overflow-x: hidden;
 }
 
+html, body, #root, .App {
+  margin: 0;
+  padding: 0;
+  background: transparent !important;
+  height: 100%;
+}
+
 .App {
   text-align: center;
 }
