@@ -11,7 +11,7 @@ body {
   overflow-x: hidden;
 }
 
-html, body, #root, .App {
+html, #root, .App {
   margin: 0;
   padding: 0;
   background: transparent !important;
@@ -41,6 +41,7 @@ html, body, #root, .App {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  background: transparent !important;
 }
 
 .App-link {
