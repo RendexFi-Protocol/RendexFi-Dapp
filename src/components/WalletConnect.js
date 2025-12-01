@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Connection, LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js';
 import './WalletConnect.css';
-
-const { Connection, LAMPORTS_PER_SOL } = require(@solana/web3.js');
 
 const WalletConnect = () => {
   const [isConnected, setIsConnected] = useState(false);
@@ -9,10 +8,8 @@ const WalletConnect = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [balance, setBalance] = useState(0);
   const [connection] = useState(new Connection('https://api.mainnet-beta.solana.com'));
-  
-  
-  
-  // Balance abruf wenn verbunden ist
+
+  // Balance abrufen wenn verbunden ist
   useEffect(() => {
     if (isConnected && walletAddress) {
       getBalance();
@@ -21,7 +18,7 @@ const WalletConnect = () => {
 
   const getBalance = async () => {
     try {
-      const publicKey = new (await import('@solana/web3.js')).PublicKey(walletAddress);
+      const publicKey = new PublicKey(walletAddress);
       const balanceInLamports = await connection.getBalance(publicKey);
       const balanceInSOL = balanceInLamports / LAMPORTS_PER_SOL;
       setBalance(balanceInSOL);
@@ -29,7 +26,7 @@ const WalletConnect = () => {
       console.error('Error fetching balance:', error);
     }
   };
-  
+
   const connectPhantom = async () => {
     try {
       if (window?.solana?.isPhantom) {
@@ -40,7 +37,7 @@ const WalletConnect = () => {
         setShowMenu(false);
         
         // Balance sofort abrufen
-        const publicKey = new (await import('@solana/web3.js')).PublicKey(address);
+        const publicKey = new PublicKey(address);
         const balanceInLamports = await connection.getBalance(publicKey);
         const balanceInSOL = balanceInLamports / LAMPORTS_PER_SOL;
         setBalance(balanceInSOL);
@@ -57,12 +54,14 @@ const WalletConnect = () => {
   const connectSolflare = async () => {
     try {
       if (window?.solflare?.isSolflare) {
-        // Solflare Verbindungslogik
-        console.log('Solflare connected');
+        await window.solflare.connect();
+        const address = window.solflare.publicKey.toString();
+        setWalletAddress(address);
+        setIsConnected(true);
         setShowMenu(false);
         
         // Balance für Solflare
-        const publicKey = new (await import('@solana/web3.js')).PublicKey(address);
+        const publicKey = new PublicKey(address);
         const balanceInLamports = await connection.getBalance(publicKey);
         const balanceInSOL = balanceInLamports / LAMPORTS_PER_SOL;
         setBalance(balanceInSOL);
@@ -75,12 +74,21 @@ const WalletConnect = () => {
     }
   };
 
-  const disconnectWallet = () => {
-    if (window?.solana?.isPhantom && window.solana.disconnect) {
-      window.solana.disconnect();
+  const disconnectWallet = async () => {
+    try {
+      if (window?.solana?.isPhantom) {
+        await window.solana.disconnect();
+      }
+      if (window?.solflare?.isSolflare) {
+        await window.solflare.disconnect();
+      }
+    } catch (error) {
+      console.error('Disconnect error:', error);
+    } finally {
+      setIsConnected(false);
+      setWalletAddress('');
+      setBalance(0);
     }
-    setIsConnected(false);
-    setWalletAddress('');
   };
 
   const shortenAddress = (address) => {
@@ -132,7 +140,7 @@ const WalletConnect = () => {
             <button className="wallet-option-jup" onClick={connectPhantom}>
               <div className="wallet-option-content">
                 <div className="wallet-option-icon">
-                  <img src="/phantom-icon.png" alt="Phantom" />
+                  👻
                 </div>
                 <div className="wallet-option-info">
                   <div className="wallet-option-name">Phantom</div>
@@ -145,7 +153,7 @@ const WalletConnect = () => {
             <button className="wallet-option-jup" onClick={connectSolflare}>
               <div className="wallet-option-content">
                 <div className="wallet-option-icon">
-                  <img src="/solflare-icon.png" alt="Solflare" />
+                  🔥
                 </div>
                 <div className="wallet-option-info">
                   <div className="wallet-option-name">Solflare</div>
