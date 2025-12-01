@@ -4,8 +4,9 @@
 }
 
 .settings-button {
-  background: transparent;
-  border: none;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
   cursor: pointer;
   padding: 8px;
   border-radius: 12px;
