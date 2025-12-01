@@ -5,16 +5,16 @@
 
 .settings-button {
   background: rgba(255, 255, 255, 0.05);
-  border: 1px;
-  border-radius: 3px;
+  border: 0.5px;
+  border-radius: 6px;
   cursor: pointer;
-  padding: 6px;
+  padding: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
   color: white;
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 .settings-button:hover {
