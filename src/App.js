@@ -11,7 +11,7 @@ function App() {
             <div className="nav-wrapper">
                 <div className="nav-left">
                   
-                     <Serachbar />
+                    <Serachbar />
                 </div>
                 <div className="nav-right">
                     
