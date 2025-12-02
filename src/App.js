@@ -9,8 +9,10 @@ function App() {
         {/* Leere Navbar */}
         <nav className="navbar">
             <div className="nav-wrapper">
-                <div className="nav-left">             
-                </div>
+                <div className="nav-left">
+                  
+                  <Serachbar />
+                 </div>
                 <div className="nav-right">
                     
                     <SettingsButton />
