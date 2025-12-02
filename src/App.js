@@ -11,8 +11,8 @@ function App() {
             <div className="nav-wrapper">
                 <div className="nav-left">
                   
-                  <Serachbar />
-                 </div>
+                     <Serachbar />
+                </div>
                 <div className="nav-right">
                     
                     <SettingsButton />
