@@ -72,7 +72,7 @@ const SettingsButton = () => {
 
             <div className="settings-footer">
               <div className="app-info">
-                <div className="app-version">v1.0.0 Beta</div>
+                <div className="app-version">v0.0.1 Beta</div>
                 <div className="network-status">
                   <span className="status-dot connected"></span>
                   Mainnet
