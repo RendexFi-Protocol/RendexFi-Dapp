@@ -5,10 +5,10 @@ html, body {
 }
 
 body {
+  overscroll-behavior: none;
   margin: 0;
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
   min-height: 100%;
-  background: 
+  background:
     radial-gradient(circle at 20% 25%, rgba(170, 80, 255, 0.45), transparent 60%),
     radial-gradient(circle at 80% 75%, rgba(0, 200, 255, 0.45), transparent 60%),
     radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.7), #02030a 80%);
@@ -22,4 +22,13 @@ html, #root, .App {
   padding: 0;
   background: transparent !important;
   height: 100%;
+}
+
+.App {
+  min-height: 100%;
+  padding:
+    env(safe-area-inset-top)
+    env(safe-area-inset-right)
+    env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
 }
