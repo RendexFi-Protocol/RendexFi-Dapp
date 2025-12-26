@@ -29,3 +29,20 @@
     0 20px 60px rgba(0, 0, 0, 0.45),
     inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
+.wallet-content {
+  padding: 20px;
+  color: #fff;
+}
+
+.wallet-title {
+  font-size: 12px;
+  opacity: 0.7;
+  letter-spacing: 0.1em;
+}
+
+.wallet-balance {
+  display: block;
+  margin-top: 12px;
+  font-size: 32px;
+  font-weight: 600;
+}
