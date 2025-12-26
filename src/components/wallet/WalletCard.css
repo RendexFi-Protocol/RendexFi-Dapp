@@ -7,17 +7,25 @@
 
   margin: 96px auto 0;
 
-  /* Base Card */
-  background: #9fb6b8;
+  /* Base Card – 50% transparent */
+  background: linear-gradient(
+    135deg,
+    rgba(174, 191, 194, 0.5),
+    rgba(159, 178, 182, 0.5)
+  );
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
   border-radius: 28px;
   overflow: hidden;
 
   box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.45);
+    0 20px 60px rgba(0, 0, 0, 0.35);
 }
 
 /* ===============================
-   DIAGONALER OVERLAY (FLACH, NICHT PFEIL)
+   DIAGONALER OVERLAY – 50% TRANSPARENT
    =============================== */
 .wallet--card::before {
   content: "";
@@ -27,16 +35,15 @@
 
   background: linear-gradient(
     135deg,
-    #2f6f74 0%,
-    #3c5a5e 60%,
-    #3c5a5e 100%
+    rgba(74, 127, 132, 0.5) 0%,
+    rgba(62, 111, 115, 0.5) 55%,
+    rgba(53, 95, 99, 0.5) 100%
   );
 
-  /* lange, ruhige Schräge */
   clip-path: polygon(
     0 0,
-    65% 0,
-    100% 60%,
+    66% 0,
+    100% 58%,
     90% 100%,
     0 100%
   );
@@ -62,6 +69,7 @@
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.12em;
+  opacity: 0.9;
 }
 
 .wallet-balance {
@@ -75,14 +83,14 @@
    =============================== */
 .wallet-address {
   position: absolute;
-  left: 20px;
+  left: 22px;
   bottom: 18px;
   z-index: 3;
 
-  background: rgba(0, 0, 0, 0.55);
-  color: #fff;
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
 
-  padding: 6px 10px;
+  padding: 6px 12px;
   border-radius: 10px;
 
   font-size: 14px;
